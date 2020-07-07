@@ -81,17 +81,65 @@
                                 <action selector="didTapLogout:" destination="14p-oo-r9N" id="1IJ-hE-f6v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="addImage" image="insta_camera_btn" id="yVq-f4-LtB"/>
+                        <barButtonItem key="rightBarButtonItem" title="addImage" image="insta_camera_btn" id="yVq-f4-LtB">
+                            <connections>
+                                <action selector="didTapPicture:" destination="14p-oo-r9N" id="fY6-YF-8hK"/>
+                                <segue destination="IhT-zc-NrO" kind="presentation" identifier="composeSegue" id="QHC-F4-3Ov"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFT-Bh-BCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942" y="136"/>
+            <point key="canvasLocation" x="1940.5797101449277" y="135.9375"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="6jJ-vD-eWh">
+            <objects>
+                <viewController storyboardIdentifier="ComposeViewController" id="U7s-Ei-Urn" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xhT-WA-6U3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rH-9l-ldf">
+                                <rect key="frame" x="0.0" y="56" width="149" height="163"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-5G-F2O">
+                                <rect key="frame" x="148" y="56" width="266" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="PRV-eg-V78"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gtb-Hr-QY2">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="duW-HU-QLg">
+                            <connections>
+                                <action selector="didTapCancel:" destination="U7s-Ei-Urn" id="Kd8-pm-oPO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="p9i-XM-vAq">
+                            <connections>
+                                <action selector="didTapShare:" destination="U7s-Ei-Urn" id="xIy-0t-Hoe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionField" destination="l4X-5G-F2O" id="hgw-5b-Cor"/>
+                        <outlet property="postPictureView" destination="0rH-9l-ldf" id="NYg-Xi-qOh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="exI-aS-KNH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3820.289855072464" y="135.9375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GzO-ab-fyz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Ev-WJ-Ode" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeFeedViewController" automaticallyAdjustsScrollViewInsets="NO" id="1Ev-WJ-Ode" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pel-F8-I3s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -105,6 +153,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-Ou-YVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104" y="136"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ydP-Lc-tDY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IhT-zc-NrO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pda-E2-ny3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="U7s-Ei-Urn" kind="relationship" relationship="rootViewController" id="zcJ-Ts-mgJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZJa-yG-Ih5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2908.6956521739135" y="135.9375"/>
         </scene>
     </scenes>
     <resources>

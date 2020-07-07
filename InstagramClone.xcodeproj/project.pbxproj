@@ -17,6 +17,9 @@
 		1AB202E624B3BD73009171A6 /* InstagramCloneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB202E524B3BD73009171A6 /* InstagramCloneUITests.m */; };
 		1AB202F724B3CB54009171A6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB202F624B3CB54009171A6 /* LoginViewController.m */; };
 		1AB202FA24B3D186009171A6 /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB202F924B3D186009171A6 /* HomeFeedViewController.m */; };
+		1AB202FD24B4BBA5009171A6 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB202FC24B4BBA5009171A6 /* ComposeViewController.m */; };
+		1AB2030024B4C10D009171A6 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB202FF24B4C10D009171A6 /* PostCell.m */; };
+		1AB2030424B4C395009171A6 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2030324B4C395009171A6 /* Post.m */; };
 		5B819B6AC22AFA5A7341685E /* Pods_InstagramClone_InstagramCloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25AE3CBBC70B22218A40CD5F /* Pods_InstagramClone_InstagramCloneUITests.framework */; };
 		8C3814497C2BC613B6FC1FFC /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E94AC3FADD3D1B065D39A16 /* Pods_InstagramClone.framework */; };
 		B118FE3B9720ADC75E281A06 /* Pods_InstagramCloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3741318F0B3560E930769956 /* Pods_InstagramCloneTests.framework */; };
@@ -61,6 +64,12 @@
 		1AB202F624B3CB54009171A6 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1AB202F824B3D186009171A6 /* HomeFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeFeedViewController.h; sourceTree = "<group>"; };
 		1AB202F924B3D186009171A6 /* HomeFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFeedViewController.m; sourceTree = "<group>"; };
+		1AB202FB24B4BBA5009171A6 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		1AB202FC24B4BBA5009171A6 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		1AB202FE24B4C10D009171A6 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		1AB202FF24B4C10D009171A6 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		1AB2030224B4C395009171A6 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		1AB2030324B4C395009171A6 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		25AE3CBBC70B22218A40CD5F /* Pods_InstagramClone_InstagramCloneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramClone_InstagramCloneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E94AC3FADD3D1B065D39A16 /* Pods_InstagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3741318F0B3560E930769956 /* Pods_InstagramCloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramCloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +134,7 @@
 		1AB202BD24B3BD72009171A6 /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				1AB2030124B4C377009171A6 /* Models */,
 				1AB202F424B3CB3A009171A6 /* View Controllers */,
 				1AB202BE24B3BD72009171A6 /* AppDelegate.h */,
 				1AB202BF24B3BD72009171A6 /* AppDelegate.m */,
@@ -165,8 +175,21 @@
 				1AB202F624B3CB54009171A6 /* LoginViewController.m */,
 				1AB202F824B3D186009171A6 /* HomeFeedViewController.h */,
 				1AB202F924B3D186009171A6 /* HomeFeedViewController.m */,
+				1AB202FB24B4BBA5009171A6 /* ComposeViewController.h */,
+				1AB202FC24B4BBA5009171A6 /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1AB2030124B4C377009171A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1AB202FE24B4C10D009171A6 /* PostCell.h */,
+				1AB202FF24B4C10D009171A6 /* PostCell.m */,
+				1AB2030224B4C395009171A6 /* Post.h */,
+				1AB2030324B4C395009171A6 /* Post.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		458B12EDB86660D7CFCCAFC8 /* Frameworks */ = {
@@ -433,8 +456,11 @@
 				1AB202FA24B3D186009171A6 /* HomeFeedViewController.m in Sources */,
 				1AB202F724B3CB54009171A6 /* LoginViewController.m in Sources */,
 				1AB202C024B3BD72009171A6 /* AppDelegate.m in Sources */,
+				1AB202FD24B4BBA5009171A6 /* ComposeViewController.m in Sources */,
+				1AB2030024B4C10D009171A6 /* PostCell.m in Sources */,
 				1AB202D124B3BD73009171A6 /* main.m in Sources */,
 				1AB202C324B3BD72009171A6 /* SceneDelegate.m in Sources */,
+				1AB2030424B4C395009171A6 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

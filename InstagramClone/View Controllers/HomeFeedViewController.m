@@ -11,8 +11,12 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
+#import "ComposeViewController.h"
+#import "PostCell.h"
+
 
 @interface HomeFeedViewController ()
+
 
 @end
 
@@ -32,10 +36,15 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     myDelegate.window.rootViewController = loginViewController;
-    
-    
 }
 
+- (IBAction)didTapPicture:(id)sender {
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ComposeViewController *composeViewController = [storyboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    myDelegate.window.rootViewController = composeViewController;
+}
 
 /*
 #pragma mark - Navigation
@@ -46,5 +55,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+//    
+//}
+//
+//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return 2;
+//}
+
+
+
 
 @end
