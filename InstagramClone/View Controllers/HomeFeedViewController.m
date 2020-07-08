@@ -48,6 +48,7 @@
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
+    [postQuery includeKey:@"createdAt"];
     postQuery.limit = 20;
 
     // fetch data asynchronously
@@ -56,7 +57,7 @@
             // do something with the data fetched
             NSLog(@"Successfully Loaded Feed");
             self.feedArray = [posts mutableCopy];
-//            NSLog(@"%@", self.feedArray);
+            NSLog(@"%@", self.feedArray);
             
             [self.feedTableView reloadData];
             [self.refreshControl endRefreshing];
@@ -81,12 +82,9 @@
 }
 
 - (IBAction)didTapPicture:(id)sender {
-    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ComposeViewController *composeViewController = [storyboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
-    myDelegate.window.rootViewController = composeViewController;
+    [self performSegueWithIdentifier:@"composeSegue" sender:nil];
 }
+
 
 /*
 #pragma mark - Navigation
@@ -107,12 +105,14 @@
     
     [cell setPost:post];
     
-    NSLog(@"%@", cell.postView.file);
+//    NSLog(@"%@", cell.postView.file);
     
     cell.captionLabel.text = post.caption;
 //    [cell.photoImageView setImage:post.image];
     
-    
+    cell.captionLabel.alpha = 0;
+    cell.createdAtString.alpha = 0;
+    cell.moreButton.alpha = 1;
     return cell;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "PostCell.h"
+#import "DateTools.h"
 
 @implementation PostCell
 
@@ -25,7 +26,19 @@
     _post = post;
     self.postView.file = post[@"image"];
     [self.postView loadInBackground];
+    
+    NSDate *date = post.createdAt;
+    self.createdAtString.text = date.timeAgoSinceNow;
+     
 }
 
+- (IBAction)onTapMore:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.captionLabel.alpha = 1;
+        self.createdAtString.alpha = 1;
+        self.moreButton.alpha = 0;
+    }];
+    
+}
 
 @end
