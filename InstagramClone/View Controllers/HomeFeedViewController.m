@@ -16,9 +16,11 @@
 #import "Post.h"
 
 
+
 @interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (nonatomic, strong) NSMutableArray *feedArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 @end
@@ -30,6 +32,11 @@
     // Do any additional setup after loading the view.
     self.feedTableView.dataSource = self;
     self.feedTableView.delegate = self;
+    
+//  implement pull to refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getFeed) forControlEvents:UIControlEventValueChanged];
+    [self.feedTableView insertSubview:self.refreshControl atIndex:0];
     
     //Get Feed
     [self getFeed];
@@ -52,6 +59,7 @@
 //            NSLog(@"%@", self.feedArray);
             
             [self.feedTableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             // handle error
