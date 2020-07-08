@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeFeedViewController : UIViewController // <UITableViewDataSource, UITableViewDelegate>
+@interface HomeFeedViewController : UIViewController 
 
 @end
 

@@ -10,13 +10,13 @@
 #import "Post.h"
 #import "SceneDelegate.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () 
 @property (weak, nonatomic) IBOutlet UIImageView *postPictureView;
 @property (weak, nonatomic) IBOutlet UITextField *captionField;
 
 @end
 
-@implementation ComposeViewController
+@implementation ComposeViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,13 +53,13 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-//    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    //    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
+    
     // Do something with the images (based on your use case)
     [self resizeImage:editedImage withSize:CGSizeMake(960, 1440)];
-    [self.postPictureView setImage:editedImage];
-    
+//    [self.postPictureView setImage:editedImage];
+    self.postPictureView.image = editedImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

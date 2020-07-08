@@ -13,9 +13,12 @@
 #import "SceneDelegate.h"
 #import "ComposeViewController.h"
 #import "PostCell.h"
+#import "Post.h"
 
 
-@interface HomeFeedViewController ()
+@interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *feedTableView;
+@property (nonatomic, strong) NSMutableArray *feedArray;
 
 
 @end
@@ -25,7 +28,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.feedTableView.dataSource = self;
+    self.feedTableView.delegate = self;
+    
+    //Get Feed
+    [self getFeed];
+
 }
+
+-(void)getFeed{
+    // construct PFQuery
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+
+    // fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            NSLog(@"Successfully Loaded Feed");
+            self.feedArray = [posts mutableCopy];
+//            NSLog(@"%@", self.feedArray);
+            
+            [self.feedTableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+}
+
 
 - (IBAction)didTapLogout:(id)sender {
     // PFUser.current() will now be nil
@@ -56,15 +90,27 @@
 }
 */
 
-//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//    
-//}
-//
-//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 2;
-//}
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    
+    Post *post = self.feedArray[indexPath.row];
+//    cell.post = post;
+    
+    [cell setPost:post];
+    
+    NSLog(@"%@", cell.postView.file);
+    
+    cell.captionLabel.text = post.caption;
+//    [cell.photoImageView setImage:post.image];
+    
+    
+    return cell;
+}
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.feedArray.count;
+}
 
 
 @end
