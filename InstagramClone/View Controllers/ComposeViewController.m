@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postPictureView;
 @property (weak, nonatomic) IBOutlet UITextField *captionField;
 
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation ComposeViewController 
@@ -21,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.activityIndicator.alpha = 0;
+    
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -76,7 +81,11 @@
 
 
 - (IBAction)didTapShare:(id)sender {
+    self.activityIndicator.alpha = 1;
+    [self.activityIndicator startAnimating];
+    self.view.backgroundColor = UIColor.systemGray2Color;
     [Post postUserImage:self.postPictureView.image withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        
         if (succeeded){
             NSLog(@"Image successfully posted");
             
@@ -88,7 +97,12 @@
         } else{
             NSLog(@"Error: %@", error.localizedDescription);
         }
+        [self.activityIndicator stopAnimating];
     }];
+}
+
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
 }
 
 /*

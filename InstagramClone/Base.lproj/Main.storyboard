@@ -48,6 +48,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5cu-bp-vbs" firstAttribute="bottom" secondItem="oue-eS-CiA" secondAttribute="bottom" id="1BH-8e-u3K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="87E-Qn-XZm" secondAttribute="trailing" constant="56" id="8y0-yt-HeI"/>
@@ -66,6 +67,9 @@
                             <constraint firstItem="OLV-vx-6NP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xBf-fO-0nC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4ec-rP-OW6" appends="YES" id="1c5-qm-Jtv"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="zbQ-7b-f4U"/>
                     <connections>
@@ -75,6 +79,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4ec-rP-OW6">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="gjw-4w-AKi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="135.9375"/>
         </scene>
@@ -176,15 +185,24 @@
                                 <rect key="frame" x="0.0" y="56" width="149" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-5G-F2O">
-                                <rect key="frame" x="148" y="56" width="266" height="34"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NWn-Vd-7V1">
+                                <rect key="frame" x="84" y="313" width="209" height="153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xis-9J-UOw">
+                                <rect key="frame" x="166" y="56" width="248" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="PRV-eg-V78"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8mo-3j-den" appends="YES" id="LA4-W1-0iQ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="gtb-Hr-QY2">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="duW-HU-QLg">
@@ -199,11 +217,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="captionField" destination="l4X-5G-F2O" id="hgw-5b-Cor"/>
+                        <outlet property="activityIndicator" destination="NWn-Vd-7V1" id="G93-ik-LTq"/>
+                        <outlet property="captionField" destination="xis-9J-UOw" id="04P-Zt-wDm"/>
                         <outlet property="postPictureView" destination="0rH-9l-ldf" id="NYg-Xi-qOh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exI-aS-KNH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8mo-3j-den">
+                    <connections>
+                        <action selector="onTap:" destination="U7s-Ei-Urn" id="2BU-CY-QNs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3820.289855072464" y="135.9375"/>
         </scene>
