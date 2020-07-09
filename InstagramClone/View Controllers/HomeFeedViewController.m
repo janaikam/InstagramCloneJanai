@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (nonatomic, strong) NSMutableArray *feedArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *feedActivityIndicator;
+
+
+
 
 
 @end
@@ -29,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.feedActivityIndicator.alpha = 0;
+    
     // Do any additional setup after loading the view.
     self.feedTableView.dataSource = self;
     self.feedTableView.delegate = self;
@@ -44,6 +50,9 @@
 }
 
 -(void)getFeed{
+    //activity indicator
+    self.feedActivityIndicator.alpha = 1;
+    [self.feedActivityIndicator startAnimating];
     // construct PFQuery
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
@@ -66,6 +75,8 @@
             // handle error
             NSLog(@"Error: %@", error.localizedDescription);
         }
+        [self.feedActivityIndicator stopAnimating];
+        self.feedActivityIndicator.alpha = 0;
     }];
 }
 
