@@ -14,7 +14,7 @@
 #import "ComposeViewController.h"
 #import "PostCell.h"
 #import "Post.h"
-
+#import "DetailsViewController.h"
 
 
 @interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -97,17 +97,6 @@
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     
@@ -121,14 +110,32 @@
     cell.captionLabel.text = post.caption;
 //    [cell.photoImageView setImage:post.image];
     
-    cell.captionLabel.alpha = 0;
-    cell.createdAtString.alpha = 0;
-    cell.moreButton.alpha = 1;
+//    cell.captionLabel.alpha = 0;
+//    cell.createdAtString.alpha = 0;
+//    cell.moreButton.alpha = 1;
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.feedArray.count;
+}
+
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.feedTableView indexPathForCell:tappedCell];
+    Post *post = self.feedArray[indexPath.row];
+    
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+    
+    detailsViewController.post = post;
+    
 }
 
 
