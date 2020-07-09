@@ -57,7 +57,7 @@
             // do something with the data fetched
             NSLog(@"Successfully Loaded Feed");
             self.feedArray = [posts mutableCopy];
-            NSLog(@"%@", self.feedArray);
+//            NSLog(@"%@", self.feedArray);
             
             [self.feedTableView reloadData];
             [self.refreshControl endRefreshing];
