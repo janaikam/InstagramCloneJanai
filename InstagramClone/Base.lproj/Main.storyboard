@@ -172,17 +172,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NWn-Vd-7V1">
-                                <rect key="frame" x="84" y="313" width="209" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NWn-Vd-7V1">
+                                <rect key="frame" x="188.5" y="413.5" width="37" height="37"/>
                                 <color key="color" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rH-9l-ldf">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0rH-9l-ldf">
                                 <rect key="frame" x="0.0" y="56" width="149" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="u3d-i0-daC" appends="YES" id="Hcl-6u-kIZ"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xis-9J-UOw">
-                                <rect key="frame" x="166" y="56" width="248" height="50"/>
+                                <rect key="frame" x="166" y="56" width="248" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -190,9 +195,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="NWn-Vd-7V1" firstAttribute="centerY" secondItem="PRV-eg-V78" secondAttribute="centerY" id="3kH-fS-kHF"/>
+                            <constraint firstItem="NWn-Vd-7V1" firstAttribute="centerX" secondItem="PRV-eg-V78" secondAttribute="centerX" id="URL-Ja-xIX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PRV-eg-V78"/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="8mo-3j-den" appends="YES" id="LA4-W1-0iQ"/>
+                            <outletCollection property="gestureRecognizers" destination="t3Y-U9-tqO" appends="YES" id="wM3-Hk-sNE"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="gtb-Hr-QY2">
@@ -214,9 +223,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exI-aS-KNH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="8mo-3j-den">
+                <tapGestureRecognizer id="u3d-i0-daC">
                     <connections>
-                        <action selector="onTap:" destination="U7s-Ei-Urn" id="2BU-CY-QNs"/>
+                        <action selector="onTapPicture:" destination="U7s-Ei-Urn" id="WrL-j4-pcp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="t3Y-U9-tqO">
+                    <connections>
+                        <action selector="onTap:" destination="U7s-Ei-Urn" id="tFh-Hw-DcB"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -304,5 +318,6 @@
     <resources>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="instagram font" width="512" height="250"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
