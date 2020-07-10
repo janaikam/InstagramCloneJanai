@@ -30,6 +30,7 @@
     self.postView.file = self.post[@"image"];
     [self.postView loadInBackground];
     
+//    NSLog(@"Details loaded");
 }
 
 /*

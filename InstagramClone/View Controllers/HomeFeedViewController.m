@@ -108,6 +108,7 @@
 //    NSLog(@"%@", cell.postView.file);
     
     cell.captionLabel.text = post.caption;
+    cell.userLabel.text = post.author.username;
 //    [cell.photoImageView setImage:post.image];
     
 //    cell.captionLabel.alpha = 0;

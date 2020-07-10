@@ -27,8 +27,9 @@
     self.postView.file = post[@"image"];
     [self.postView loadInBackground];
     
-//    NSDate *date = post.createdAt;
-//    self.createdAtString.text = date.timeAgoSinceNow;
+    NSDate *date = post.createdAt;
+    self.createdAtString.text = date.timeAgoSinceNow;
+    
      
 }
 
